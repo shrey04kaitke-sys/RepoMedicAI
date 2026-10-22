@@ -1,0 +1,4 @@
+# Official Graphify (https://github.com/Graphify-Labs/graphify), pinned to the version verified here.
+# If pypi.org is unreachable, add:  --index-url <a PyPI mirror you trust>
+# (this project's verified install used pypi.tuna.tsinghua.edu.cn; that is a third-party mirror).
+graphifyy==0.9.93

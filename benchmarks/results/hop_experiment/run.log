@@ -1,0 +1,64 @@
+[price_thousands_separator] sanity OK (fails before, reference fix passes); graph build 1.798s 
+  qwen2.5:3b  graph    t0 tokens=1833 files=4 located=True patch=False validated=False 
+  qwen2.5:3b  graph    t1 tokens=1833 files=4 located=True patch=False validated=False 
+  qwen2.5:3b  graph2   t0 tokens=1849 files=4 located=True patch=False validated=False 
+  qwen2.5:3b  graph2   t1 tokens=1849 files=4 located=True patch=True validated=False 
+  gemma3:1b   graph    t0 tokens=2123 files=4 located=False patch=False validated=False 
+  gemma3:1b   graph    t1 tokens=2123 files=4 located=False patch=False validated=False 
+  gemma3:1b   graph2   t0 tokens=2139 files=4 located=False patch=False validated=False 
+  gemma3:1b   graph2   t1 tokens=2139 files=4 located=True patch=False validated=False 
+[pagination_off_by_one] sanity OK (fails before, reference fix passes); graph build 1.932s 
+  qwen2.5:3b  graph    t0 tokens=1030 files=2 located=False patch=False validated=False 
+  qwen2.5:3b  graph    t1 tokens=1030 files=2 located=False patch=False validated=False 
+  qwen2.5:3b  graph2   t0 tokens=None files=0 located=None patch=None validated=None RuntimeError: Ollama returned HTTP 500: Internal Server Error {"error":"prediction aborted, token repeat limit reached"}
+  qwen2.5:3b  graph2   t1 tokens=1111 files=3 located=True patch=False validated=False 
+  gemma3:1b   graph    t0 tokens=1185 files=2 located=False patch=False validated=False 
+  gemma3:1b   graph    t1 tokens=1185 files=2 located=False patch=True validated=False 
+  gemma3:1b   graph2   t0 tokens=1286 files=3 located=False patch=False validated=False 
+  gemma3:1b   graph2   t1 tokens=1286 files=3 located=False patch=False validated=False 
+[free_shipping_boundary] sanity OK (fails before, reference fix passes); graph build 1.878s 
+  qwen2.5:3b  graph    t0 tokens=1083 files=3 located=False patch=True validated=False 
+  qwen2.5:3b  graph    t1 tokens=1083 files=3 located=False patch=True validated=False 
+  qwen2.5:3b  graph2   t0 tokens=1207 files=4 located=False patch=True validated=False 
+  qwen2.5:3b  graph2   t1 tokens=1207 files=4 located=False patch=True validated=False 
+  gemma3:1b   graph    t0 tokens=1256 files=3 located=False patch=False validated=False 
+  gemma3:1b   graph    t1 tokens=1256 files=3 located=False patch=False validated=False 
+  gemma3:1b   graph2   t0 tokens=1404 files=4 located=True patch=False validated=False 
+  gemma3:1b   graph2   t1 tokens=1404 files=4 located=True patch=False validated=False 
+[mutable_default_argument] sanity OK (fails before, reference fix passes); graph build 1.72s 
+  qwen2.5:3b  graph    t0 tokens=850 files=2 located=False patch=False validated=False 
+  qwen2.5:3b  graph    t1 tokens=850 files=2 located=False patch=False validated=False 
+  qwen2.5:3b  graph2   t0 tokens=917 files=3 located=True patch=False validated=False 
+  qwen2.5:3b  graph2   t1 tokens=917 files=3 located=False patch=False validated=False 
+  gemma3:1b   graph    t0 tokens=1000 files=2 located=True patch=False validated=False 
+  gemma3:1b   graph    t1 tokens=1000 files=2 located=True patch=False validated=False 
+  gemma3:1b   graph2   t0 tokens=1082 files=3 located=True patch=False validated=False 
+  gemma3:1b   graph2   t1 tokens=1082 files=3 located=True patch=False validated=False 
+[moving_average_window] sanity OK (fails before, reference fix passes); graph build 1.948s 
+  qwen2.5:3b  graph    t0 tokens=1145 files=3 located=True patch=True validated=True 
+  qwen2.5:3b  graph    t1 tokens=1145 files=3 located=True patch=True validated=True 
+  qwen2.5:3b  graph2   t0 tokens=1242 files=4 located=True patch=False validated=False 
+  qwen2.5:3b  graph2   t1 tokens=1242 files=4 located=True patch=False validated=False 
+  gemma3:1b   graph    t0 tokens=1360 files=3 located=True patch=False validated=False 
+  gemma3:1b   graph    t1 tokens=None files=0 located=None patch=None validated=None RuntimeError: Ollama returned HTTP 500: Internal Server Error {"error":"prediction aborted, token repeat limit reached"}
+  gemma3:1b   graph2   t0 tokens=1474 files=4 located=True patch=False validated=False 
+  gemma3:1b   graph2   t1 tokens=1474 files=4 located=False patch=False validated=False 
+[shallow_config_merge] sanity OK (fails before, reference fix passes); graph build 1.916s 
+  qwen2.5:3b  graph    t0 tokens=967 files=2 located=False patch=False validated=False 
+  qwen2.5:3b  graph    t1 tokens=967 files=2 located=False patch=False validated=False 
+  qwen2.5:3b  graph2   t0 tokens=1040 files=3 located=False patch=False validated=False 
+  qwen2.5:3b  graph2   t1 tokens=1040 files=3 located=False patch=False validated=False 
+  gemma3:1b   graph    t0 tokens=1133 files=2 located=False patch=False validated=False 
+  gemma3:1b   graph    t1 tokens=1133 files=2 located=False patch=False validated=False 
+  gemma3:1b   graph2   t0 tokens=None files=0 located=None patch=None validated=None RuntimeError: Ollama returned HTTP 500: Internal Server Error {"error":"prediction aborted, token repeat limit reached"}
+  gemma3:1b   graph2   t1 tokens=1222 files=3 located=False patch=False validated=False 
+
+Run: 2026-10-22 16:38:50 · cases: ['price_thousands_separator', 'pagination_off_by_one', 'free_shipping_boundary', 'mutable_default_argument', 'moving_average_window', 'shallow_config_merge'] · trials: 2 · graphify: graphify 0.9.93 · python 3.13.0
+
+| model | strategy | runs | err | prompt tok | files | bug-file recall | precision | retr. s | infer. s | located | diag. heuristic | patch made | patch passes tests |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| gemma3:1b | graph | 11 | 1 | 1341.273 | 2.636 | 0.273 | 1.0 | 0.028 | 1.567 | 0.273 | 0.0 | 0.091 | 0.0 |
+| gemma3:1b | graph2 | 11 | 1 | 1453.818 | 3.545 | 0.818 | 1.0 | 0.031 | 5.978 | 0.545 | 0.182 | 0.0 | 0.0 |
+| qwen2.5:3b | graph | 12 | 0 | 1151.333 | 2.667 | 0.333 | 1.0 | 0.027 | 5.998 | 0.333 | 0.333 | 0.333 | 0.167 |
+| qwen2.5:3b | graph2 | 11 | 1 | 1238.273 | 3.545 | 0.909 | 1.0 | 0.03 | 10.748 | 0.545 | 0.545 | 0.273 | 0.0 |
+

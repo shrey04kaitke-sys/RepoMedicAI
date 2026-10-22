@@ -1,0 +1,10 @@
+[browser]
+# Streamlit sends anonymous usage statistics by default; RepoMedic is local-first, so disable it.
+gatherUsageStats = false
+
+[server]
+# Do not auto-open a browser (the launcher script does that) and, importantly, listen on localhost only:
+# the app can read local repositories and apply approved patches, so it must not be reachable from the LAN.
+headless = true
+address = "localhost"
+port = 8501

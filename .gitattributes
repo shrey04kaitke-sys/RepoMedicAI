@@ -1,0 +1,7 @@
+# Normalise line endings for source, but keep recorded benchmark evidence byte-for-byte so the
+# SHA-256 values in benchmarks/baseline_snapshot/MANIFEST.sha256 stay valid after a clone on any OS.
+* text=auto
+*.ps1 text eol=crlf
+benchmarks/results/** -text
+benchmarks/baseline_snapshot/** -text
+demo/** -text

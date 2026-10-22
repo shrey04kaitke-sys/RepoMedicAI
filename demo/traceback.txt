@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys; sys.path.insert(0, 'tests'); sys.path.insert(0, '.');from cart import cart_total; cart_total([('$1,299.00', 1)])
+                                                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\<user>\AppData\Local\Temp\repomedic-demo-bmvhxcpi\shopapp\cart.py", line 5, in cart_total
+    return round(sum(line_total(price, qty) for price, qty in lines), 2)
+                 ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\<user>\AppData\Local\Temp\repomedic-demo-bmvhxcpi\shopapp\cart.py", line 5, in <genexpr>
+    return round(sum(line_total(price, qty) for price, qty in lines), 2)
+                     ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\<user>\AppData\Local\Temp\repomedic-demo-bmvhxcpi\shopapp\pricing.py", line 7, in line_total
+    return parse_price(price_text) * quantity
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\<user>\AppData\Local\Temp\repomedic-demo-bmvhxcpi\shopapp\pricing.py", line 3, in parse_price
+    return float(text.strip("$"))
+ValueError: could not convert string to float: '1,299.00'

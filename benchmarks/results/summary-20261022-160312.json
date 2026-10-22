@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "started": "2026-10-22 16:03:11",
+    "cases": [
+      "price_thousands_separator",
+      "pagination_off_by_one",
+      "free_shipping_boundary",
+      "mutable_default_argument",
+      "moving_average_window",
+      "shallow_config_merge"
+    ],
+    "trials": 2,
+    "models": [
+      "qwen2.5:3b",
+      "gemma3:1b"
+    ],
+    "num_ctx": 8192,
+    "temperature": 0,
+    "context_budget_chars": 24000,
+    "graphify_version": "graphify 0.9.93",
+    "python": "3.13.0",
+    "ollama_models": [
+      "gemma3:1b",
+      "qwen2.5:3b"
+    ],
+    "graph_builds": {
+      "price_thousands_separator": {
+        "seconds": 1.803,
+        "error": null
+      },
+      "pagination_off_by_one": {
+        "seconds": 1.835,
+        "error": null
+      },
+      "free_shipping_boundary": {
+        "seconds": 1.773,
+        "error": null
+      },
+      "mutable_default_argument": {
+        "seconds": 1.937,
+        "error": null
+      },
+      "moving_average_window": {
+        "seconds": 1.957,
+        "error": null
+      },
+      "shallow_config_merge": {
+        "seconds": 1.862,
+        "error": null
+      }
+    }
+  },
+  "summary": [
+    {
+      "model": "gemma3:1b",
+      "strategy": "graph",
+      "runs": 10,
+      "errors": 2,
+      "mean_prompt_tokens": 1411.4,
+      "mean_prompt_chars": 4361.0,
+      "mean_files_retrieved": 2.8,
+      "bug_file_recall": 0.4,
+      "mean_relevant_recall": 0.733,
+      "mean_precision": 1.0,
+      "mean_retrieval_s": 0.023,
+      "mean_inference_s": 3.134,
+      "located_bug_rate": 0.3,
+      "diagnosis_heuristic_rate": 0.3,
+      "patch_produced_rate": 0.0,
+      "patch_validated_rate": 0.0
+    },
+    {
+      "model": "gemma3:1b",
+      "strategy": "keyword",
+      "runs": 10,
+      "errors": 2,
+      "mean_prompt_tokens": 1884.4,
+      "mean_prompt_chars": 6629.7,
+      "mean_files_retrieved": 7.2,
+      "bug_file_recall": 0.9,
+      "mean_relevant_recall": 0.967,
+      "mean_precision": 0.55,
+      "mean_retrieval_s": 0.019,
+      "mean_inference_s": 10.116,
+      "located_bug_rate": 0.3,
+      "diagnosis_heuristic_rate": 0.1,
+      "patch_produced_rate": 0.0,
+      "patch_validated_rate": 0.0
+    },
+    {
+      "model": "gemma3:1b",
+      "strategy": "all",
+      "runs": 10,
+      "errors": 2,
+      "mean_prompt_tokens": 2939.6,
+      "mean_prompt_chars": 10802.6,
+      "mean_files_retrieved": 11.6,
+      "bug_file_recall": 1.0,
+      "mean_relevant_recall": 1.0,
+      "mean_precision": 0.309,
+      "mean_retrieval_s": 0.009,
+      "mean_inference_s": 1.233,
+      "located_bug_rate": 0.5,
+      "diagnosis_heuristic_rate": 0.0,
+      "patch_produced_rate": 0.0,
+      "patch_validated_rate": 0.0
+    },
+    {
+      "model": "qwen2.5:3b",
+      "strategy": "graph",
+      "runs": 10,
+      "errors": 2,
+      "mean_prompt_tokens": 1188.2,
+      "mean_prompt_chars": 4274.0,
+      "mean_files_retrieved": 2.8,
+      "bug_file_recall": 0.4,
+      "mean_relevant_recall": 0.733,
+      "mean_precision": 1.0,
+      "mean_retrieval_s": 0.024,
+      "mean_inference_s": 3.557,
+      "located_bug_rate": 0.4,
+      "diagnosis_heuristic_rate": 0.4,
+      "patch_produced_rate": 0.5,
+      "patch_validated_rate": 0.2
+    },
+    {
+      "model": "qwen2.5:3b",
+      "strategy": "keyword",
+      "runs": 12,
+      "errors": 0,
+      "mean_prompt_tokens": 1628.333,
+      "mean_prompt_chars": 6825.667,
+      "mean_files_retrieved": 7.333,
+      "bug_file_recall": 0.833,
+      "mean_relevant_recall": 0.944,
+      "mean_precision": 0.521,
+      "mean_retrieval_s": 0.019,
+      "mean_inference_s": 3.894,
+      "located_bug_rate": 0.667,
+      "diagnosis_heuristic_rate": 0.5,
+      "patch_produced_rate": 0.583,
+      "patch_validated_rate": 0.083
+    },
+    {
+      "model": "qwen2.5:3b",
+      "strategy": "all",
+      "runs": 11,
+      "errors": 1,
+      "mean_prompt_tokens": 2502.636,
+      "mean_prompt_chars": 11027.818,
+      "mean_files_retrieved": 11.636,
+      "bug_file_recall": 1.0,
+      "mean_relevant_recall": 1.0,
+      "mean_precision": 0.311,
+      "mean_retrieval_s": 0.009,
+      "mean_inference_s": 4.278,
+      "located_bug_rate": 0.818,
+      "diagnosis_heuristic_rate": 0.545,
+      "patch_produced_rate": 0.727,
+      "patch_validated_rate": 0.364
+    }
+  ]
+}

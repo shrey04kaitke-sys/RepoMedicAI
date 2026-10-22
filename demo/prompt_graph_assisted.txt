@@ -1,0 +1,109 @@
+You are RepoMedic, a cautious local debugging assistant.
+Return JSON only with keys: hypotheses (array), patch (object), validation (array).
+Each hypothesis must include cause, evidence, confidence, and status.
+status must be one of plausible, verified, or unverified. Never call a cause verified
+unless the supplied evidence proves it. The patch object must include unified_diff and
+review_required=true. unified_diff must be a standard unified diff with
+--- a/<path> and +++ b/<path> headers and @@ -start,count +start,count @@ hunks that
+copy existing lines exactly. Never invent files or test results.
+
+FAILURE:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys; sys.path.insert(0, 'tests'); sys.path.insert(0, '.');from cart import cart_total; cart_total([('$1,299.00', 1)])
+                                                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\<user>\AppData\Local\Temp\repomedic-demo-bmvhxcpi\shopapp\cart.py", line 5, in cart_total
+    return round(sum(line_total(price, qty) for price, qty in lines), 2)
+                 ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\<user>\AppData\Local\Temp\repomedic-demo-bmvhxcpi\shopapp\cart.py", line 5, in <genexpr>
+    return round(sum(line_total(price, qty) for price, qty in lines), 2)
+                     ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\<user>\AppData\Local\Temp\repomedic-demo-bmvhxcpi\shopapp\pricing.py", line 7, in line_total
+    return parse_price(price_text) * quantity
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\<user>\AppData\Local\Temp\repomedic-demo-bmvhxcpi\shopapp\pricing.py", line 3, in parse_price
+    return float(text.strip("$"))
+ValueError: could not convert string to float: '1,299.00'
+
+
+TRACEBACK FRAMES:
+[
+  {
+    "file": "<string>",
+    "line": 1,
+    "function": "<module>"
+  },
+  {
+    "file": "C:\\Users\\<user>\\AppData\\Local\\Temp\\repomedic-demo-bmvhxcpi\\shopapp\\cart.py",
+    "line": 5,
+    "function": "cart_total"
+  },
+  {
+    "file": "C:\\Users\\<user>\\AppData\\Local\\Temp\\repomedic-demo-bmvhxcpi\\shopapp\\cart.py",
+    "line": 5,
+    "function": "<genexpr>"
+  },
+  {
+    "file": "C:\\Users\\<user>\\AppData\\Local\\Temp\\repomedic-demo-bmvhxcpi\\shopapp\\pricing.py",
+    "line": 7,
+    "function": "line_total"
+  },
+  {
+    "file": "C:\\Users\\<user>\\AppData\\Local\\Temp\\repomedic-demo-bmvhxcpi\\shopapp\\pricing.py",
+    "line": 3,
+    "function": "parse_price"
+  }
+]
+
+GRAPHIFY STATUS:
+Loaded Graphify graph.json with 113 nodes and 111 relationships; 4 seed nodes matched the traceback (file-level/function-level).
+GRAPHIFY GRAPH (from the official Graphify tool; empty when unavailable):
+NODES:
+- cart_total() (cart.py:L4)
+- cart.py (cart.py:L1)
+- line_total() (pricing.py:L6)
+- parse_price() (pricing.py:L1)
+- test_cart_total_with_thousands_separator() (tests/test_cart.py:L6)
+- pricing.py (pricing.py:L1)
+- test_cart.py (tests/test_cart.py:L1)
+- Convert a price string such as '$12.50' into a float. (pricing.py:L2)
+EDGES:
+- cart_total() --calls--> line_total() [EXTRACTED]
+- line_total() --calls--> parse_price() [EXTRACTED]
+- test_cart_total_with_thousands_separator() --calls--> cart_total() [EXTRACTED]
+- cart.py --imports--> line_total() [EXTRACTED]
+- test_cart.py --imports--> cart_total() [EXTRACTED]
+- cart.py --imports_from--> pricing.py [EXTRACTED]
+- test_cart.py --imports_from--> cart.py [EXTRACTED]
+- cart.py --contains--> cart_total() [EXTRACTED]
+- pricing.py --contains--> parse_price() [EXTRACTED]
+- pricing.py --contains--> line_total() [EXTRACTED]
+- Convert a price string such as '$12.50' into a float. --rationale_for--> parse_price() [EXTRACTED]
+
+SOURCE:
+
+--- cart.py ---
+from pricing import line_total
+
+
+def cart_total(lines):
+    return round(sum(line_total(price, qty) for price, qty in lines), 2)
+
+--- pricing.py ---
+def parse_price(text):
+    """Convert a price string such as '$12.50' into a float."""
+    return float(text.strip("$"))
+
+
+def line_total(price_text, quantity):
+    return parse_price(price_text) * quantity
+
+--- tests\test_cart.py ---
+import sys, pathlib
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from cart import cart_total
+
+
+def test_cart_total_with_thousands_separator():
+    assert cart_total([("$1,299.00", 1), ("$5.00", 2)]) == 1309.0
+

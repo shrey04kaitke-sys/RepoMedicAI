@@ -1,0 +1,114 @@
+{
+  "baseline_all_files": [
+    {
+      "prompt_tokens": 5136,
+      "output_tokens": 248,
+      "prompt_chars": 18675,
+      "source_chars": 16001,
+      "hypotheses": [
+        {
+          "cause": "The function `parse_price` in `pricing.py` is unable to convert the price string '$1,299.00' to a float.",
+          "evidence": "The error traceback shows that the function `parse_price` in `pricing.py` is called with a price string '$1,299.00', which results in a `ValueError: could not convert string to float: '1,299.00'`.",
+          "confidence": 0.95,
+          "status": "plausible"
+        }
+      ],
+      "diff": "@@ -3 +3 @@ -3,1 +3,1 @@ - return float(text.strip(\"$\")) + return float(text.strip(\"$\"))\n",
+      "validation": {
+        "error": "PatchValidationError: No supported unified diff files were found"
+      }
+    },
+    {
+      "prompt_tokens": 5136,
+      "output_tokens": 248,
+      "prompt_chars": 18675,
+      "source_chars": 16001,
+      "hypotheses": [
+        {
+          "cause": "The function `parse_price` in `pricing.py` is unable to convert the price string '$1,299.00' to a float.",
+          "evidence": "The error traceback shows that the function `parse_price` in `pricing.py` is called with the price string '$1,299.00', which results in a `ValueError: could not convert string to float: '1,299.00'`.",
+          "confidence": 0.95,
+          "status": "plausible"
+        }
+      ],
+      "diff": "@@ -3 +3 @@ -3,1 +3,1 @@ - return float(text.strip(\"$\")) + return float(text.strip(\"$\"))\n",
+      "validation": {
+        "error": "PatchValidationError: No supported unified diff files were found"
+      }
+    },
+    {
+      "prompt_tokens": 5136,
+      "output_tokens": 248,
+      "prompt_chars": 18675,
+      "source_chars": 16001,
+      "hypotheses": [
+        {
+          "cause": "The function `parse_price` in `pricing.py` is unable to convert the price string '$1,299.00' to a float.",
+          "evidence": "The error traceback shows that the function `parse_price` in `pricing.py` is called with the price string '$1,299.00', which results in a `ValueError: could not convert string to float: '1,299.00'`.",
+          "confidence": 0.95,
+          "status": "plausible"
+        }
+      ],
+      "diff": "@@ -3 +3 @@ -3,1 +3,1 @@ - return float(text.strip(\"$\")) + return float(text.strip(\"$\"))\n",
+      "validation": {
+        "error": "PatchValidationError: No supported unified diff files were found"
+      }
+    }
+  ],
+  "graph_assisted": [
+    {
+      "prompt_tokens": 1260,
+      "output_tokens": 245,
+      "prompt_chars": 4363,
+      "source_chars": 637,
+      "hypotheses": [
+        {
+          "cause": "The function `parse_price` is unable to convert the price string '$1,299.00' to a float due to the presence of a comma in the string.",
+          "evidence": "The traceback shows that the function `parse_price` is called within the function `line_total`, which is part of the `cart_total` function. The error occurs when the function attempts to convert the price string '$1,299.00' to a float using `float(text.strip(\"$\"))`.",
+          "confidence": 0.95,
+          "status": "verified"
+        }
+      ],
+      "diff": "@@ -3 +3 @@\\n- return float(text.strip(\"$\"))\\n-\\n- return parse_price(price_text) * quantity\\n\\n@@ -6 +7 @@\\n+ return float(text.strip(\",\")) * quantity",
+      "validation": {
+        "error": "PatchValidationError: No supported unified diff files were found"
+      }
+    },
+    {
+      "prompt_tokens": 1260,
+      "output_tokens": 268,
+      "prompt_chars": 4363,
+      "source_chars": 637,
+      "hypotheses": [
+        {
+          "cause": "The function `parse_price` is unable to convert the price string '$1,299.00' to a float due to the presence of a comma in the string.",
+          "evidence": "The traceback shows that the function `parse_price` is called within the function `line_total`, which is part of the `cart_total` function. The error occurs when the function attempts to convert the price string '$1,299.00' to a float using `float(text.strip(\"$\"))`.",
+          "confidence": 0.95,
+          "status": "verified"
+        }
+      ],
+      "diff": "@@ -3 +3 @@\\n- return float(text.strip(\"$\"))\\n-\\n- def parse_price(text):\\n-     \"\"\"Convert a price string such as '$12.50' into a float.\"\"\"\\n-     return float(text.strip(\"$\"))\\n-\\n",
+      "validation": {
+        "error": "PatchValidationError: No supported unified diff files were found"
+      }
+    },
+    {
+      "prompt_tokens": 1260,
+      "output_tokens": 268,
+      "prompt_chars": 4363,
+      "source_chars": 637,
+      "hypotheses": [
+        {
+          "cause": "The function `parse_price` is unable to convert the price string '$1,299.00' to a float due to the presence of a comma in the string.",
+          "evidence": "The traceback shows that the function `parse_price` is called within the function `line_total`, which is part of the `cart_total` function. The error occurs when the function attempts to convert the price string '$1,299.00' to a float using `float(text.strip(\"$\"))`.",
+          "confidence": 0.95,
+          "status": "verified"
+        }
+      ],
+      "diff": "@@ -3 +3 @@\\n- return float(text.strip(\"$\"))\\n-\\n- def parse_price(text):\\n-     \"\"\"Convert a price string such as '$12.50' into a float.\"\"\"\\n-     return float(text.strip(\"$\"))\\n-\\n",
+      "validation": {
+        "error": "PatchValidationError: No supported unified diff files were found"
+      }
+    }
+  ]
+}

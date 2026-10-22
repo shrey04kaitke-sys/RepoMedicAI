@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "started": "2026-10-22 16:38:50",
+    "cases": [
+      "price_thousands_separator",
+      "pagination_off_by_one",
+      "free_shipping_boundary",
+      "mutable_default_argument",
+      "moving_average_window",
+      "shallow_config_merge"
+    ],
+    "trials": 2,
+    "models": [
+      "qwen2.5:3b",
+      "gemma3:1b"
+    ],
+    "num_ctx": 8192,
+    "temperature": 0,
+    "context_budget_chars": 24000,
+    "graphify_version": "graphify 0.9.93",
+    "python": "3.13.0",
+    "ollama_models": [
+      "gemma3:1b",
+      "qwen2.5:3b"
+    ],
+    "graph_builds": {
+      "price_thousands_separator": {
+        "seconds": 1.798,
+        "error": null
+      },
+      "pagination_off_by_one": {
+        "seconds": 1.932,
+        "error": null
+      },
+      "free_shipping_boundary": {
+        "seconds": 1.878,
+        "error": null
+      },
+      "mutable_default_argument": {
+        "seconds": 1.72,
+        "error": null
+      },
+      "moving_average_window": {
+        "seconds": 1.948,
+        "error": null
+      },
+      "shallow_config_merge": {
+        "seconds": 1.916,
+        "error": null
+      }
+    }
+  },
+  "summary": [
+    {
+      "model": "gemma3:1b",
+      "strategy": "graph",
+      "runs": 11,
+      "errors": 1,
+      "mean_prompt_tokens": 1341.273,
+      "mean_prompt_chars": 4190.091,
+      "mean_files_retrieved": 2.636,
+      "bug_file_recall": 0.273,
+      "mean_relevant_recall": 0.72,
+      "mean_precision": 1.0,
+      "mean_retrieval_s": 0.028,
+      "mean_inference_s": 1.567,
+      "located_bug_rate": 0.273,
+      "diagnosis_heuristic_rate": 0.0,
+      "patch_produced_rate": 0.091,
+      "patch_validated_rate": 0.0
+    },
+    {
+      "model": "gemma3:1b",
+      "strategy": "graph2",
+      "runs": 11,
+      "errors": 1,
+      "mean_prompt_tokens": 1453.818,
+      "mean_prompt_chars": 4501.455,
+      "mean_files_retrieved": 3.545,
+      "bug_file_recall": 0.818,
+      "mean_relevant_recall": 0.955,
+      "mean_precision": 1.0,
+      "mean_retrieval_s": 0.031,
+      "mean_inference_s": 5.978,
+      "located_bug_rate": 0.545,
+      "diagnosis_heuristic_rate": 0.182,
+      "patch_produced_rate": 0.0,
+      "patch_validated_rate": 0.0
+    },
+    {
+      "model": "qwen2.5:3b",
+      "strategy": "graph",
+      "runs": 12,
+      "errors": 0,
+      "mean_prompt_tokens": 1151.333,
+      "mean_prompt_chars": 4189.833,
+      "mean_files_retrieved": 2.667,
+      "bug_file_recall": 0.333,
+      "mean_relevant_recall": 0.722,
+      "mean_precision": 1.0,
+      "mean_retrieval_s": 0.027,
+      "mean_inference_s": 5.998,
+      "located_bug_rate": 0.333,
+      "diagnosis_heuristic_rate": 0.333,
+      "patch_produced_rate": 0.333,
+      "patch_validated_rate": 0.167
+    },
+    {
+      "model": "qwen2.5:3b",
+      "strategy": "graph2",
+      "runs": 11,
+      "errors": 1,
+      "mean_prompt_tokens": 1238.273,
+      "mean_prompt_chars": 4509.273,
+      "mean_files_retrieved": 3.545,
+      "bug_file_recall": 0.909,
+      "mean_relevant_recall": 0.977,
+      "mean_precision": 1.0,
+      "mean_retrieval_s": 0.03,
+      "mean_inference_s": 10.748,
+      "located_bug_rate": 0.545,
+      "diagnosis_heuristic_rate": 0.545,
+      "patch_produced_rate": 0.273,
+      "patch_validated_rate": 0.0
+    }
+  ]
+}

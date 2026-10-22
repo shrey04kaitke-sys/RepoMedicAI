@@ -1,0 +1,50 @@
+F
+================================== FAILURES ===================================
+__________________ test_cart_total_with_thousands_separator ___________________
+
+    def test_cart_total_with_thousands_separator():
+>       assert cart_total([("$1,299.00", 1), ("$5.00", 2)]) == 1309.0
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_cart.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+lines = [('$1,299.00', 1), ('$5.00', 2)]
+
+    def cart_total(lines):
+>       return round(sum(line_total(price, qty) for price, qty in lines), 2)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cart.py:5: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <list_iterator object at 0x00000203995DAB60>
+
+>   return round(sum(line_total(price, qty) for price, qty in lines), 2)
+                     ^^^^^^^^^^^^^^^^^^^^^^
+
+cart.py:5: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+price_text = '$1,299.00', quantity = 1
+
+    def line_total(price_text, quantity):
+>       return parse_price(price_text) * quantity
+               ^^^^^^^^^^^^^^^^^^^^^^^
+
+pricing.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+text = '$1,299.00'
+
+    def parse_price(text):
+        """Convert a price string such as '$12.50' into a float."""
+>       return float(text.strip("$"))
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: could not convert string to float: '1,299.00'
+
+pricing.py:3: ValueError
+=========================== short test summary info ===========================
+FAILED tests/test_cart.py::test_cart_total_with_thousands_separator - ValueEr...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 0.17s

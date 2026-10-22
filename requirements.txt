@@ -1,0 +1,9 @@
+# RepoMedic core (repomedic.py) uses only the Python standard library.
+# Frontend (app.py). 1.55.0 was the version verified in this project.
+streamlit>=1.40
+# Tests and isolated patch validation
+pytest>=8
+
+# Graphify is installed separately into an isolated environment (.venv-graphify):
+#   python -m venv .venv-graphify
+#   .venv-graphify\Scripts\pip install -r requirements-graphify.txt
